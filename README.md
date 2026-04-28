@@ -12,12 +12,13 @@ Delete a shortened URL
 Error handling
 ```
 ### 🛠️ Tech Stack
+```
 React (Vite)
 Axios (API calls)
 JavaScript (ES6+)
-📦 Prerequisites
-
-### Make sure you have installed:
+```
+### 📦 Prerequisites
+ Make sure you have installed:
 ```
 Node.js (v18+ recommended)
 npm or yarn

@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import {useEffect, useImperativeHandle, useState} from "react";
 import { getAllUrls, deleteUrl, redirectToFullUrl } from "../api/urlApi";
 
-export default function UrlList() {
+export default function UrlList({ refresh }) {
     const [urls, setUrls] = useState([]);
     const [error, setError] = useState(null);
 
@@ -16,7 +16,7 @@ export default function UrlList() {
 
     useEffect(() => {
         fetchUrls();
-    }, []);
+    }, [refresh]); // ✅ refresh triggers reload
 
     const handleDelete = async (alias) => {
         try {
@@ -29,7 +29,7 @@ export default function UrlList() {
 
     return (
         <div style={{ marginTop: "30px" }}>
-            <h3>All Shortened URLs</h3>
+            <h3>All URLs</h3>
 
             {error && <p style={{ color: "red" }}>{error}</p>}
 

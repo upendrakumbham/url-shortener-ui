@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {shortenUrl} from "../api/UrlApi.js";
 
-export default function UrlForm() {
+export default function UrlForm({ onSuccess }) {
     const [fullUrl, setFullUrl] = useState("");
     const [alias, setAlias] = useState("");
     const [result, setResult] = useState(null);
@@ -17,8 +17,12 @@ export default function UrlForm() {
                 fullUrl,
                 customAlias: alias || null,
             });
-
             setResult(response.data.shortUrl);
+
+            if (onSuccess) {
+                onSuccess();
+            }
+
         } catch (err) {
             if (err.response) {
                 setError(err.response.data || "Something went wrong");
